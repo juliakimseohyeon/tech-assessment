@@ -35,6 +35,20 @@ export default function NoteItem() {
       setPinnedNoteId([...pinnedNoteId, noteId]);
     }
   };
+
+  const handleClickDelete = async (noteId) => {
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_API_URL}/${noteId}`
+      );
+      if (response) {
+        setNotes(response.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       {notes.map((note) => (
@@ -82,6 +96,7 @@ export default function NoteItem() {
             className={`absolute w-16 right-40 top-1/4 transition-all ${
               hoveredNoteId === note.id ? "block" : "hidden"
             }`}
+            onClick={() => handleClickDelete(note.id)}
           />
         </div>
       ))}

@@ -14,7 +14,7 @@ export default function MainBoard() {
         <h1 className="text-5xl font-bold text-black">Notes</h1>
         <img
           src={iconAdd}
-          className="w-16"
+          className="w-16 cursor-pointer"
           onClick={() => setAddBtnClicked(true)}
         />
       </div>

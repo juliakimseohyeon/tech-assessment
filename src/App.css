@@ -599,6 +599,10 @@ video {
   display: none;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -637,6 +641,10 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .text-3xl {

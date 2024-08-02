@@ -83,11 +83,11 @@ export default function NoteItem({ notes, setNotes }) {
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row items-center gap-4">
                 <img src={iconAddPerson} className="w-10" />
-                <p className="text-lg text-lightgrey">
+                <p className="text-lg text-grey">
                   {note.collaborator ? note.collaborator : "No Collaborators"}
                 </p>
               </div>
-              <p className="text-lightgrey">{note.timestamp}</p>
+              <p className="text-grey italic">{note.timestamp}</p>
             </div>
           </div>
           <img

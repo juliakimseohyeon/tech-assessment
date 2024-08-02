@@ -574,6 +574,14 @@ video {
   top: 25%;
 }
 
+.left-40 {
+  left: 10rem;
+}
+
+.right-40 {
+  right: 10rem;
+}
+
 .mx-64 {
   margin-left: 16rem;
   margin-right: 16rem;
@@ -633,6 +641,11 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.px-64 {
+  padding-left: 16rem;
+  padding-right: 16rem;
 }
 
 .text-5xl {

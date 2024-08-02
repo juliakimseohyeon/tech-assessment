@@ -7,7 +7,7 @@ import axios from "axios";
 
 export default function NoteItem() {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
-  const [pinnedNoteId, setPinnedNoteId] = useState(null);
+  const [pinnedNoteId, setPinnedNoteId] = useState([]);
   const [notes, setNotes] = useState([]);
 
   /* -------------------------------------------------------------------------- */
@@ -26,6 +26,15 @@ export default function NoteItem() {
     }
     getAllNotes();
   }, []);
+
+  const handleClickPin = (noteId) => {
+    // Check if pinned note is already in the pinnedNoteId array. If it is, remove it from the array
+    if (pinnedNoteId.includes(noteId)) {
+      setPinnedNoteId(pinnedNoteId.filter((id) => id !== noteId));
+    } else {
+      setPinnedNoteId([...pinnedNoteId, noteId]);
+    }
+  };
   return (
     <>
       {notes.map((note) => (
@@ -35,12 +44,13 @@ export default function NoteItem() {
           onMouseEnter={() => setHoveredNoteId(note.id)}
           onMouseLeave={() => setHoveredNoteId(null)}
         >
-          {pinnedNoteId ? (
+          {pinnedNoteId.includes(note.id) ? (
             <img
               src={iconPinBlue}
-              className={`absolute w-16 left-40 top-1/4 transition-all ${
-                hoveredNoteId === note.id ? "block" : "hidden"
-              }`}
+              className={`absolute w-16 left-40 top-1/4 transition-all`}
+              onClick={() => {
+                handleClickPin(note.id);
+              }}
             />
           ) : (
             <img
@@ -48,7 +58,9 @@ export default function NoteItem() {
               className={`absolute w-16 left-40 top-1/4 transition-all ${
                 hoveredNoteId === note.id ? "block" : "hidden"
               }`}
-              onClick={() => setPinnedNoteId(note.id)}
+              onClick={() => {
+                handleClickPin(note.id);
+              }}
             />
           )}
           <div className="mx-64">

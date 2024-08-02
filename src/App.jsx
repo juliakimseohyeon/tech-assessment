@@ -1,7 +1,8 @@
 import "./App.css";
+import MainBoard from "./pages/MainBoard";
 
 function App() {
-  return;
+  return <MainBoard />;
 }
 
 export default App;

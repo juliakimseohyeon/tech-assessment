@@ -1,10 +1,12 @@
 import iconAdd from "../assets/icons/icon-add.svg";
-import iconSearch from "../assets/icons/icon-search.svg";
 import NoteList from "../component/NoteList";
 import { useState } from "react";
+import SearchBar from "../component/SearchBar";
 
 export default function MainBoard() {
   const [addBtnClicked, setAddBtnClicked] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [notes, setNotes] = useState([]);
 
   return (
     <main className="flex flex-col gap-8">
@@ -16,17 +18,12 @@ export default function MainBoard() {
           onClick={() => setAddBtnClicked(true)}
         />
       </div>
-      <form className="relative mx-64 flex flex-row items-center gap-4">
-        <img src={iconSearch} className="w-12 absolute -left-20" />
-        <input
-          placeholder="Search through your Notes"
-          name="search"
-          className="w-full"
-        />
-      </form>
+      <SearchBar setSearchInput={setSearchInput} setNotes={setNotes} />
       <NoteList
         addBtnClicked={addBtnClicked}
         setAddBtnClicked={setAddBtnClicked}
+        notes={notes}
+        setNotes={setNotes}
       />
     </main>
   );

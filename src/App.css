@@ -566,6 +566,14 @@ video {
   left: -5rem;
 }
 
+.-right-20 {
+  right: -5rem;
+}
+
+.top-1\/4 {
+  top: 25%;
+}
+
 .mx-64 {
   margin-left: 16rem;
   margin-right: 16rem;
@@ -575,8 +583,16 @@ video {
   margin-top: 3rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .w-12 {
@@ -655,4 +671,10 @@ video {
 .text-lightgrey {
   --tw-text-opacity: 1;
   color: rgb(229 229 229 / var(--tw-text-opacity));
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }

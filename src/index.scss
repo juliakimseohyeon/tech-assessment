@@ -9,12 +9,20 @@ main {
 }
 
 input {
-  font-size: 1.5em;
-  font-style: italic;
+  padding: 0.5em;
+}
+
+input:focus {
+  border: $color-blue;
 }
 
 input::placeholder {
   color: $color-lightgrey;
+}
+
+.input--search {
+  font-size: 1.5em;
+  font-style: italic;
 }
 
 .input--add {

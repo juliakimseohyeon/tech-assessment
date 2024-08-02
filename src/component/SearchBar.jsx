@@ -34,7 +34,7 @@ export default function SearchBar({ setSearchInput, setNotes }) {
       <input
         placeholder="Search through your Notes"
         name="search"
-        className="w-full"
+        className="w-full input--search"
         onChange={handleOnChange}
       />
     </form>

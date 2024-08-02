@@ -76,13 +76,13 @@ export default function NoteItem({ notes, setNotes }) {
               }}
             />
           )}
-          <div className="mx-64">
+          <div className="mx-64 flex flex-col gap-4">
             <h2 className="text-3xl font-semibold text-darkgrey">
               {note.note}
             </h2>
             <div className="flex flex-row justify-between items-center">
-              <div className="flex flex-row items-center">
-                <img src={iconAddPerson} className="w-16" />
+              <div className="flex flex-row items-center gap-4">
+                <img src={iconAddPerson} className="w-10" />
                 <p className="text-lg text-lightgrey">
                   {note.collaborator ? note.collaborator : "No Collaborators"}
                 </p>

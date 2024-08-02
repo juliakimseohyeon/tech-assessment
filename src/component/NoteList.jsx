@@ -9,7 +9,7 @@ export default function NoteList({
   setAddBtnClicked,
 }) {
   return (
-    <div>
+    <div className="flex flex-col gap-8">
       <NoteItem notes={notes} setNotes={setNotes} />
       {addBtnClicked && (
         <AddNote setAddBtnClicked={setAddBtnClicked} setNotes={setNotes} />

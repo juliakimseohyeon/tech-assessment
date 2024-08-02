@@ -619,6 +619,10 @@ video {
   width: 2rem;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -641,6 +645,10 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .px-64 {

@@ -61,7 +61,7 @@ export default function NoteItem({ notes, setNotes }) {
           {pinnedNoteId.includes(note.id) ? (
             <img
               src={iconPinBlue}
-              className={`absolute w-16 left-40 top-1/4 transition-all`}
+              className={`absolute w-16 left-40 top-1/4 transition-all cursor-pointer`}
               onClick={() => {
                 handleClickPin(note.id);
               }}
@@ -69,7 +69,7 @@ export default function NoteItem({ notes, setNotes }) {
           ) : (
             <img
               src={iconPin}
-              className={`absolute w-16 left-40 top-1/4 transition-all ${
+              className={`absolute w-16 left-40 top-1/4 transition-all cursor-pointer ${
                 hoveredNoteId === note.id ? "block" : "hidden"
               }`}
               onClick={() => {
@@ -95,7 +95,7 @@ export default function NoteItem({ notes, setNotes }) {
           </div>
           <img
             src={iconDelete}
-            className={`absolute w-16 right-40 top-1/4 transition-all ${
+            className={`absolute w-12 right-40 top-1/4 transition-all cursor-pointer ${
               hoveredNoteId === note.id ? "block" : "hidden"
             }`}
             onClick={() => handleClickDelete(note.id)}

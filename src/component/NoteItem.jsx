@@ -5,10 +5,9 @@ import iconDelete from "../assets/icons/icon-delete.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function NoteItem() {
+export default function NoteItem({ notes, setNotes }) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
   const [pinnedNoteId, setPinnedNoteId] = useState([]);
-  const [notes, setNotes] = useState([]);
 
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */

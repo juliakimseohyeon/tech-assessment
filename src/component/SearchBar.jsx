@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import iconSearch from "../assets/icons/icon-search.svg";
 import axios from "axios";
 
 export default function SearchBar({ setSearchInput, setNotes }) {
+  const [userInput, setUserInput] = useState("");
   /* -------------------------------------------------------------------------- */
   /*                       Function to capture input data                       */
   /* -------------------------------------------------------------------------- */
@@ -13,10 +15,10 @@ export default function SearchBar({ setSearchInput, setNotes }) {
   /* -------------------------------------------------------------------------- */
   /*                Function to search for note using input data                */
   /* -------------------------------------------------------------------------- */
-  const searchNote = async (userInput) => {
+  const searchNote = async (input) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}?query=${userInput}`
+        `${import.meta.env.VITE_API_URL}/?query=${input}`
       );
       if (response) {
         setNotes(response.data);
@@ -25,6 +27,7 @@ export default function SearchBar({ setSearchInput, setNotes }) {
       console.error(err);
     }
   };
+
   return (
     <form className="relative mx-64 flex flex-row items-center gap-4">
       <img src={iconSearch} className="w-12 absolute -left-20" />

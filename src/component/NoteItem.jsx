@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function NoteItem() {
-  const [hover, setHover] = useState(false);
+  const [hoveredNoteId, setHoveredNoteId] = useState(null);
   const [notes, setNotes] = useState([]);
 
   /* -------------------------------------------------------------------------- */
@@ -31,13 +31,13 @@ export default function NoteItem() {
         <div
           key={note.id}
           className="relative flex flex-col"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
+          onMouseEnter={() => setHoveredNoteId(note.id)}
+          onMouseLeave={() => setHoveredNoteId(null)}
         >
           <img
             src={iconPin}
             className={`absolute w-16 -left-20 top-1/4 transition-all ${
-              hover ? "block" : "hidden"
+              hoveredNoteId === note.id ? "block" : "hidden"
             }`}
           />
           <h2 className="text-3xl font-semibold text-darkgrey">{note.note}</h2>
@@ -53,7 +53,7 @@ export default function NoteItem() {
           <img
             src={iconDelete}
             className={`absolute w-16 -right-20 top-1/4 transition-all ${
-              hover ? "block" : "hidden"
+              hoveredNoteId === note.id ? "block" : "hidden"
             }`}
           />
         </div>

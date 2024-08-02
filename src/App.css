@@ -623,3 +623,13 @@ video {
 .font-bold {
   font-weight: 700;
 }
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(75 75 75 / var(--tw-text-opacity));
+}
+
+.text-lightgrey {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity));
+}

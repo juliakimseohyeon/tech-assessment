@@ -1,5 +1,6 @@
 import iconAdd from "../assets/icons/icon-add.svg";
 import iconSearch from "../assets/icons/icon-search.svg";
+import NoteList from "../component/NoteList";
 
 export default function MainBoard() {
   return (
@@ -16,6 +17,7 @@ export default function MainBoard() {
           className="w-full"
         />
       </form>
+      <NoteList />
     </main>
   );
 }

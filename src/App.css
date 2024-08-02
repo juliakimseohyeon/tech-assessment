@@ -591,6 +591,10 @@ video {
   width: 100%;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -620,13 +624,32 @@ video {
   line-height: 1;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(75 75 75 / var(--tw-text-opacity));
+}
+
+.text-darkgrey {
+  --tw-text-opacity: 1;
+  color: rgb(134 134 134 / var(--tw-text-opacity));
 }
 
 .text-lightgrey {

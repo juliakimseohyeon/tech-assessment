@@ -4,6 +4,7 @@ import iconPinBlue from "../assets/icons/icon-pin-blue.svg";
 import iconDelete from "../assets/icons/icon-delete.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TimestampComponent from "../utils/timeago";
 
 export default function NoteItem({ notes, setNotes }) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
@@ -87,7 +88,9 @@ export default function NoteItem({ notes, setNotes }) {
                   {note.collaborator ? note.collaborator : "No Collaborators"}
                 </p>
               </div>
-              <p className="text-grey italic">{note.timestamp}</p>
+              <p className="text-grey italic">
+                {TimestampComponent(note.timestamp)}
+              </p>
             </div>
           </div>
           <img

@@ -5,7 +5,6 @@ import SearchBar from "../component/SearchBar";
 
 export default function MainBoard() {
   const [addBtnClicked, setAddBtnClicked] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
   const [notes, setNotes] = useState([]);
 
   return (
@@ -18,7 +17,7 @@ export default function MainBoard() {
           onClick={() => setAddBtnClicked(true)}
         />
       </div>
-      <SearchBar setSearchInput={setSearchInput} setNotes={setNotes} />
+      <SearchBar setNotes={setNotes} />
       <NoteList
         addBtnClicked={addBtnClicked}
         setAddBtnClicked={setAddBtnClicked}

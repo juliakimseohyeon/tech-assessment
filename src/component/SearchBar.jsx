@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
 import iconSearch from "../assets/icons/icon-search.svg";
 import axios from "axios";
 
-export default function SearchBar({ setSearchInput, setNotes }) {
-  const [userInput, setUserInput] = useState("");
+export default function SearchBar({ setNotes }) {
   /* -------------------------------------------------------------------------- */
   /*                       Function to capture input data                       */
   /* -------------------------------------------------------------------------- */
   const handleOnChange = (event) => {
-    setSearchInput(event.target.value);
     searchNote(event.target.value);
   };
 

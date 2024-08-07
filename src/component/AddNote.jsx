@@ -18,23 +18,27 @@ export default function AddNote({ setAddBtnClicked, setNotes }) {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      setNoteContent("");
-
-      const newNote = {
-        note: noteContent,
-      };
-
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}`,
-        newNote
-      );
-      if (response) {
-        setNotes(response.data);
-      }
+    if (noteContent === "") {
       setAddBtnClicked(false);
-    } catch (err) {
-      console.error(err);
+    } else {
+      try {
+        setNoteContent("");
+
+        const newNote = {
+          note: noteContent,
+        };
+
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}`,
+          newNote
+        );
+        if (response) {
+          setNotes(response.data);
+        }
+        setAddBtnClicked(false);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 

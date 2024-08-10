@@ -58,25 +58,6 @@ export default function NoteItem({ notes, setNotes }) {
           onMouseEnter={() => setHoveredNoteId(note.id)}
           onMouseLeave={() => setHoveredNoteId(null)}
         >
-          {pinnedNoteId.includes(note.id) ? (
-            <img
-              src={iconPinBlue}
-              className={`absolute w-16 left-40 top-1/4 transition-all cursor-pointer`}
-              onClick={() => {
-                handleClickPin(note.id);
-              }}
-            />
-          ) : (
-            <img
-              src={iconPin}
-              className={`absolute w-16 left-40 top-1/4 transition-all cursor-pointer ${
-                hoveredNoteId === note.id ? "block" : "hidden"
-              }`}
-              onClick={() => {
-                handleClickPin(note.id);
-              }}
-            />
-          )}
           <div className="sm:mx-4 lg:mx-64 flex flex-col gap-4">
             <h2 className="sm:text-2xl lg:text-3xl font-semibold text-darkgrey">
               {note.note}
@@ -93,13 +74,34 @@ export default function NoteItem({ notes, setNotes }) {
               </p>
             </div>
           </div>
-          <img
-            src={iconDelete}
-            className={`absolute w-12 right-40 top-1/4 transition-all cursor-pointer ${
-              hoveredNoteId === note.id ? "block" : "hidden"
-            }`}
-            onClick={() => handleClickDelete(note.id)}
-          />
+          <div className="sm:mx-4 sm:mt-4 sm:flex sm:flex-row sm:gap-4">
+            {pinnedNoteId.includes(note.id) ? (
+              <img
+                src={iconPinBlue}
+                className={`sm:w-8 lg:w-12 lg:absolute lg:left-40 lg:top-1/4 transition-all cursor-pointer`}
+                onClick={() => {
+                  handleClickPin(note.id);
+                }}
+              />
+            ) : (
+              <img
+                src={iconPin}
+                className={`sm:w-8 lg:w-12 lg:absolute lg:left-40 lg:top-1/4 transition-all cursor-pointer ${
+                  hoveredNoteId === note.id ? "block" : "hidden"
+                }`}
+                onClick={() => {
+                  handleClickPin(note.id);
+                }}
+              />
+            )}
+            <img
+              src={iconDelete}
+              className={`sm:w-8 lg:w-12 lg:absolute lg:right-40 lg:top-1/4 transition-all cursor-pointer ${
+                hoveredNoteId === note.id ? "block" : "hidden"
+              }`}
+              onClick={() => handleClickDelete(note.id)}
+            />
+          </div>
         </div>
       ))}
     </>

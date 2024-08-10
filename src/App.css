@@ -737,6 +737,10 @@ video {
     margin-left: 2.5rem;
   }
 
+  .sm\:flex {
+    display: flex;
+  }
+
   .sm\:h-12 {
     height: 3rem;
   }
@@ -751,6 +755,10 @@ video {
 
   .sm\:w-8 {
     width: 2rem;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
   }
 
   .sm\:flex-col {
@@ -800,8 +808,24 @@ video {
 }
 
 @media (min-width: 1366px) {
+  .lg\:absolute {
+    position: absolute;
+  }
+
   .lg\:-left-20 {
     left: -5rem;
+  }
+
+  .lg\:right-40 {
+    right: 10rem;
+  }
+
+  .lg\:top-1\/4 {
+    top: 25%;
+  }
+
+  .lg\:left-40 {
+    left: 10rem;
   }
 
   .lg\:mx-64 {

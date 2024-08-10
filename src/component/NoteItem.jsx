@@ -15,15 +15,17 @@ export default function NoteItem({ notes, setNotes }) {
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */
   /* -------------------------------------------------------------------------- */
+
   useEffect(() => {
     async function getAllNotes() {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
+        console.log("Fetched notes: ", response.data);
         if (response) {
           setNotes(response.data);
         }
       } catch (err) {
-        console.error(err);
+        console.error("Failed to fetch notes: ", err);
       }
     }
     getAllNotes();
@@ -43,15 +45,11 @@ export default function NoteItem({ notes, setNotes }) {
       const response = await axios.delete(
         `${import.meta.env.VITE_API_URL}/${noteId}`
       );
-      if (response) {
+      if (response.data) {
         setNotes(response.data);
       }
     } catch (err) {
-      console.error(
-        "Error details:",
-        err.response ? err.response.data : err.message
-      );
-      console.error("Full error object:", err);
+      console.error("Failed to delete note: ", err);
     }
   };
 

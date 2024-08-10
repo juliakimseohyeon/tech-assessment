@@ -562,10 +562,6 @@ video {
   position: relative;
 }
 
-.block {
-  display: block;
-}
-
 .flex {
   display: flex;
 }
@@ -588,10 +584,6 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.resize {
-  resize: both;
 }
 
 .flex-row {
@@ -637,11 +629,6 @@ video {
 .border-lightgrey {
   --tw-border-opacity: 1;
   border-color: rgb(229 229 229 / var(--tw-border-opacity));
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {
@@ -775,11 +762,6 @@ video {
 
   .lg\:m-0 {
     margin: 0px;
-  }
-
-  .lg\:mx-64 {
-    margin-left: 16rem;
-    margin-right: 16rem;
   }
 
   .lg\:mx-84 {

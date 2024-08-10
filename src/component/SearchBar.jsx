@@ -1,27 +1,41 @@
 import iconSearch from "../assets/icons/icon-search.svg";
 import axios from "axios";
+import { useState } from "react";
 
-export default function SearchBar({ setNotes }) {
+export default function SearchBar({ notes, setNotes }) {
+  // Define a state to manage the input value
+  const [inputValue, setInputValue] = useState("");
   /* -------------------------------------------------------------------------- */
   /*                       Function to capture input data                       */
   /* -------------------------------------------------------------------------- */
   const handleOnChange = (event) => {
-    searchNote(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+    if (value) {
+      searchNote(value);
+    }
   };
 
   /* -------------------------------------------------------------------------- */
   /*                Function to search for note using input data                */
   /* -------------------------------------------------------------------------- */
   const searchNote = async (input) => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/?query=${input}`
-      );
-      if (response) {
-        setNotes(response.data);
+    if (inputValue !== "") {
+      // Only make the request if query is not empty
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/?query=${input}`
+        );
+        if (response) {
+          console.log("Backend response: ", response.data);
+          setNotes(response.data);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
+    } else {
+      // Clear notes if query is empty
+      setNotes(notes);
     }
   };
 
@@ -32,6 +46,7 @@ export default function SearchBar({ setNotes }) {
         placeholder="Search through your Notes"
         name="search"
         className="sm:ml-10 lg:ml-0 w-full border-b border-solid border-1 border-lightgrey input--search"
+        value={inputValue}
         onChange={handleOnChange}
       />
     </form>

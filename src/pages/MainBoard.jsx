@@ -17,7 +17,7 @@ export default function MainBoard() {
           onClick={() => setAddBtnClicked(true)}
         />
       </div>
-      <SearchBar setNotes={setNotes} />
+      <SearchBar notes={notes} setNotes={setNotes} />
       <NoteList
         addBtnClicked={addBtnClicked}
         setAddBtnClicked={setAddBtnClicked}

@@ -47,7 +47,11 @@ export default function NoteItem({ notes, setNotes }) {
         setNotes(response.data);
       }
     } catch (err) {
-      console.error(err);
+      console.error(
+        "Error details:",
+        err.response ? err.response.data : err.message
+      );
+      console.error("Full error object:", err);
     }
   };
 

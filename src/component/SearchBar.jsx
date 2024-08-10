@@ -26,7 +26,7 @@ export default function SearchBar({ setNotes }) {
   };
 
   return (
-    <form className="relative sm:mx-4 lg:mx-80 flex flex-row items-center sm:gap-1 lg:gap-4">
+    <form className="relative sm:mx-4 lg:mx-84 flex flex-row items-center sm:gap-1 lg:gap-4">
       <img src={iconSearch} className="sm:w-8 lg:w-9 absolute lg:-left-14" />
       <input
         placeholder="Search through your Notes"

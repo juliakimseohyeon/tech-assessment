@@ -8,8 +8,8 @@ export default function MainBoard() {
   const [notes, setNotes] = useState([]);
 
   return (
-    <main className="flex flex-col sm:gap-4 lg:gap-8">
-      <div className="max-w-full sm:m-4 lg:mt-12 lg:mx-80 flex flex-row items-center justify-between">
+    <main className="flex flex-col sm:gap-4 lg:gap-6">
+      <div className="max-w-full sm:m-4 lg:mt-12 lg:mx-84 lg:mb-0 flex flex-row items-center justify-between">
         <h1 className="sm:text-4xl lg:text-5xl font-bold text-black">Notes</h1>
         <img
           src={iconAdd}

@@ -606,12 +606,16 @@ video {
   justify-content: space-between;
 }
 
+.gap-12 {
+  gap: 3rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
 
-.gap-8 {
-  gap: 2rem;
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .overflow-scroll {
@@ -723,52 +727,12 @@ video {
     position: absolute;
   }
 
-  .lg\:-left-20 {
-    left: -5rem;
-  }
-
-  .lg\:left-40 {
-    left: 10rem;
-  }
-
-  .lg\:right-40 {
-    right: 10rem;
-  }
-
-  .lg\:top-1\/4 {
-    top: 25%;
-  }
-
-  .lg\:-left-6 {
-    left: -1.5rem;
-  }
-
-  .lg\:-left-24 {
-    left: -6rem;
-  }
-
-  .lg\:-left-12 {
-    left: -3rem;
-  }
-
-  .lg\:-left-16 {
-    left: -4rem;
-  }
-
   .lg\:-left-14 {
     left: -3.5rem;
   }
 
-  .lg\:left-14 {
-    left: 3.5rem;
-  }
-
-  .lg\:right-14 {
-    right: 3.5rem;
-  }
-
-  .lg\:left-64 {
-    left: 16rem;
+  .lg\:left-68 {
+    left: 17rem;
   }
 
   .lg\:right-64 {
@@ -779,13 +743,16 @@ video {
     top: 0px;
   }
 
-  .lg\:m-0 {
-    margin: 0px;
+  .lg\:right-68 {
+    right: 17rem;
   }
 
-  .lg\:mx-128 {
-    margin-left: 32rem;
-    margin-right: 32rem;
+  .lg\:right-56 {
+    right: 14rem;
+  }
+
+  .lg\:m-0 {
+    margin: 0px;
   }
 
   .lg\:mx-64 {
@@ -793,9 +760,9 @@ video {
     margin-right: 16rem;
   }
 
-  .lg\:mx-80 {
-    margin-left: 20rem;
-    margin-right: 20rem;
+  .lg\:mx-84 {
+    margin-left: 21rem;
+    margin-right: 21rem;
   }
 
   .lg\:ml-0 {
@@ -806,8 +773,8 @@ video {
     margin-top: 3rem;
   }
 
-  .lg\:mt-0 {
-    margin-top: 0px;
+  .lg\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .lg\:w-12 {
@@ -840,6 +807,10 @@ video {
 
   .lg\:gap-8 {
     gap: 2rem;
+  }
+
+  .lg\:gap-6 {
+    gap: 1.5rem;
   }
 
   .lg\:text-3xl {

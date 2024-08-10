@@ -9,6 +9,7 @@ main {
   background-size: 4em;
   @include desktop {
     background-size: 10em;
+    background-position: 5% 90%;
   }
 }
 

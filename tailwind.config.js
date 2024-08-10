@@ -17,7 +17,9 @@ export default {
     },
     extend: {
       spacing: {
+        68: "17rem",
         80: "20rem",
+        84: "21rem",
         128: "32rem", // following the standard of 128 / 4 = 32
       },
     },

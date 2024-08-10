@@ -58,13 +58,13 @@ export default function NoteItem({ notes, setNotes }) {
           onMouseEnter={() => setHoveredNoteId(note.id)}
           onMouseLeave={() => setHoveredNoteId(null)}
         >
-          <div className="sm:mx-4 lg:mx-64 flex flex-col gap-4">
+          <div className="sm:mx-4 lg:mx-80 flex flex-col gap-4">
             <h2 className="sm:text-2xl lg:text-3xl font-semibold text-darkgrey">
               {note.note}
             </h2>
             <div className="flex sm:flex-col lg:flex-row lg:justify-between lg:items-center sm:gap-4">
               <div className="flex flex-row items-center gap-4">
-                <img src={iconAddPerson} className="sm:w-8 lg:w-10" />
+                <img src={iconAddPerson} className="sm:w-8 lg:w-9" />
                 <p className="sm:text-base lg:text-lg text-grey">
                   {note.collaborator ? note.collaborator : "No Collaborators"}
                 </p>
@@ -74,11 +74,11 @@ export default function NoteItem({ notes, setNotes }) {
               </p>
             </div>
           </div>
-          <div className="sm:mx-4 sm:mt-4 sm:flex sm:flex-row sm:gap-4">
+          <div className="w-full sm:mx-4 lg:m-0 sm:mt-4 sm:flex sm:flex-row sm:gap-4 lg:absolute lg:top-0">
             {pinnedNoteId.includes(note.id) ? (
               <img
                 src={iconPinBlue}
-                className={`sm:w-8 lg:w-12 lg:absolute lg:left-40 lg:top-1/4 transition-all cursor-pointer`}
+                className={`sm:w-8 lg:w-12 lg:absolute lg:left-64 transition-all cursor-pointer`}
                 onClick={() => {
                   handleClickPin(note.id);
                 }}
@@ -86,7 +86,7 @@ export default function NoteItem({ notes, setNotes }) {
             ) : (
               <img
                 src={iconPin}
-                className={`sm:w-8 lg:w-12 lg:absolute lg:left-40 lg:top-1/4 transition-all cursor-pointer ${
+                className={`sm:w-8 lg:w-12 lg:absolute lg:left-64 transition-all cursor-pointer ${
                   hoveredNoteId === note.id ? "block" : "hidden"
                 }`}
                 onClick={() => {
@@ -96,7 +96,7 @@ export default function NoteItem({ notes, setNotes }) {
             )}
             <img
               src={iconDelete}
-              className={`sm:w-8 lg:w-12 lg:absolute lg:right-40 lg:top-1/4 transition-all cursor-pointer ${
+              className={`sm:w-8 lg:w-9 lg:absolute lg:right-64 transition-all cursor-pointer ${
                 hoveredNoteId === note.id ? "block" : "hidden"
               }`}
               onClick={() => handleClickDelete(note.id)}

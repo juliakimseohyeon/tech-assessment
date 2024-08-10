@@ -9,11 +9,11 @@ export default function MainBoard() {
 
   return (
     <main className="flex flex-col sm:gap-4 lg:gap-8">
-      <div className="max-w-full sm:m-4 lg:mt-12 lg:mx-64 flex flex-row items-center justify-between">
+      <div className="max-w-full sm:m-4 lg:mt-12 lg:mx-80 flex flex-row items-center justify-between">
         <h1 className="sm:text-4xl lg:text-5xl font-bold text-black">Notes</h1>
         <img
           src={iconAdd}
-          className="sm:w-8 lg:w-16 cursor-pointer"
+          className="sm:w-8 lg:w-14 cursor-pointer"
           onClick={() => setAddBtnClicked(true)}
         />
       </div>

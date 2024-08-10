@@ -15,7 +15,12 @@ export default {
       sm: "375px",
       lg: "1366px",
     },
-    extend: {},
+    extend: {
+      spacing: {
+        80: "20rem",
+        128: "32rem", // following the standard of 128 / 4 = 32
+      },
+    },
   },
   plugins: [],
 };

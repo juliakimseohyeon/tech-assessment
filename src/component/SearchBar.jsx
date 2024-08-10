@@ -26,12 +26,12 @@ export default function SearchBar({ setNotes }) {
   };
 
   return (
-    <form className="relative mx-64 flex flex-row items-center gap-4">
-      <img src={iconSearch} className="w-12 absolute -left-20" />
+    <form className="relative sm:mx-4 lg:mx-64 flex flex-row items-center sm:gap-1 lg:gap-4">
+      <img src={iconSearch} className="sm:w-8 lg:w-12 absolute lg:-left-20" />
       <input
         placeholder="Search through your Notes"
         name="search"
-        className="w-full input--search"
+        className="sm:ml-10 w-full input--search"
         onChange={handleOnChange}
       />
     </form>

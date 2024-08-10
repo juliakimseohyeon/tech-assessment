@@ -43,7 +43,10 @@ export default function AddNote({ setAddBtnClicked, setNotes }) {
   };
 
   return (
-    <form className="flex flex-col gap-4 mx-64" onSubmit={handleOnSubmit}>
+    <form
+      className="flex flex-col gap-4 sm:m-4 lg:mx-64"
+      onSubmit={handleOnSubmit}
+    >
       <input
         type="text"
         placeholder="Add your note here"
@@ -52,7 +55,7 @@ export default function AddNote({ setAddBtnClicked, setNotes }) {
         name="note"
       />
       <button>
-        <img src={iconAdd} className="w-12" />
+        <img src={iconAdd} className="sm:w-8 lg:w-12" />
       </button>
     </form>
   );

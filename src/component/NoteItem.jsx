@@ -54,7 +54,7 @@ export default function NoteItem({ notes, setNotes }) {
       {notes.map((note) => (
         <div
           key={note.id}
-          className="relative flex flex-col"
+          className="relative flex flex-col w-full"
           onMouseEnter={() => setHoveredNoteId(note.id)}
           onMouseLeave={() => setHoveredNoteId(null)}
         >
@@ -77,18 +77,18 @@ export default function NoteItem({ notes, setNotes }) {
               }}
             />
           )}
-          <div className="mx-64 flex flex-col gap-4">
-            <h2 className="text-3xl font-semibold text-darkgrey">
+          <div className="sm:mx-4 lg:mx-64 flex flex-col gap-4">
+            <h2 className="sm:text-2xl lg:text-3xl font-semibold text-darkgrey">
               {note.note}
             </h2>
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex sm:flex-col lg:flex-row lg:justify-between lg:items-center sm:gap-4">
               <div className="flex flex-row items-center gap-4">
-                <img src={iconAddPerson} className="w-10" />
-                <p className="text-lg text-grey">
+                <img src={iconAddPerson} className="sm:w-8 lg:w-10" />
+                <p className="sm:text-base lg:text-lg text-grey">
                   {note.collaborator ? note.collaborator : "No Collaborators"}
                 </p>
               </div>
-              <p className="text-grey italic">
+              <p className="sm:text-sm lg:text-base text-grey italic">
                 {TimestampComponent(note.timestamp)}
               </p>
             </div>

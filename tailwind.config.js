@@ -12,6 +12,7 @@ export default {
       green: "#61eb6e",
     },
     screens: {
+      sm: "375px",
       lg: "1366px",
     },
     extend: {},

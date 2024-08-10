@@ -74,7 +74,7 @@ export default function NoteItem({ notes, setNotes }) {
               </p>
             </div>
           </div>
-          <div className="w-full sm:mx-4 lg:m-0 sm:mt-4 sm:flex sm:flex-row sm:gap-4 lg:absolute lg:top-0">
+          <div className="sm:max-w-full lg:w-full sm:ml-4 lg:m-0 sm:mt-4 sm:flex sm:flex-row sm:gap-4 lg:absolute lg:top-0">
             {pinnedNoteId.includes(note.id) ? (
               <img
                 src={iconPinBlue}

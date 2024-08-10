@@ -8,7 +8,7 @@ export default function NoteList({
   setAddBtnClicked,
 }) {
   return (
-    <div className="max-w-full flex flex-col gap-12 h-1/2 overflow-scroll">
+    <div className="max-w-full flex flex-col sm:gap-4 lg:gap-12 h-1/2 overflow-scroll">
       {addBtnClicked && (
         <AddNote setAddBtnClicked={setAddBtnClicked} setNotes={setNotes} />
       )}

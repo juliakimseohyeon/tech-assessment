@@ -31,7 +31,7 @@ export default function SearchBar({ setNotes }) {
       <input
         placeholder="Search through your Notes"
         name="search"
-        className="sm:ml-10 lg:ml-0 w-full input--search"
+        className="sm:ml-10 lg:ml-0 w-full border-b border-solid border-1 border-lightgrey input--search"
         onChange={handleOnChange}
       />
     </form>

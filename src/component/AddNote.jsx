@@ -2,14 +2,23 @@ import { useState } from "react";
 import axios from "axios";
 import iconAdd from "../assets/icons/icon-add.svg";
 
+const initialValues = {
+  note: "",
+  collaborator: "",
+};
+
 export default function AddNote({ setAddBtnClicked, setNotes }) {
-  const [noteContent, setNoteContent] = useState("");
+  const [values, setValues] = useState(initialValues);
 
   /* -------------------------------------------------------------------------- */
   /*                       Function to capture input data                       */
   /* -------------------------------------------------------------------------- */
   const handleOnChange = (event) => {
-    setNoteContent(event.target.value);
+    const { name, value } = event.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
   };
 
   /* -------------------------------------------------------------------------- */
@@ -18,19 +27,14 @@ export default function AddNote({ setAddBtnClicked, setNotes }) {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    if (noteContent === "") {
-      setAddBtnClicked(false);
+    if (values === initialValues) {
+      setAddBtnClicked(false); // If values haven't changed (user hasn't input anything), don't add note
     } else {
       try {
-        setNoteContent("");
-
-        const newNote = {
-          note: noteContent,
-        };
-
+        setValues(initialValues);
         const response = await axios.post(
           `${import.meta.env.VITE_API_URL}`,
-          newNote
+          values
         );
         if (response) {
           setNotes(response.data);
@@ -47,12 +51,20 @@ export default function AddNote({ setAddBtnClicked, setNotes }) {
       className="flex flex-col gap-4 sm:m-4 lg:mx-64"
       onSubmit={handleOnSubmit}
     >
+      <h2 className="sm:text-2xl lg:text-3xl text-grey">Add your note here</h2>
       <input
         type="text"
-        placeholder="Add your note here"
-        className="input--add"
+        placeholder="Note Content"
         onChange={handleOnChange}
+        value={values.note}
         name="note"
+      />
+      <input
+        type="text"
+        placeholder="Collaborator"
+        onChange={handleOnChange}
+        value={values.collaborator}
+        name="collaborator"
       />
       <button>
         <img src={iconAdd} className="sm:w-8 lg:w-12" />

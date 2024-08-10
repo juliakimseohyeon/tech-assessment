@@ -27,10 +27,3 @@ input::placeholder {
     font-size: 1.5em;
   }
 }
-
-.input--add {
-  font-size: 1.5em;
-  @include desktop {
-    font-size: 1.875em;
-  }
-}

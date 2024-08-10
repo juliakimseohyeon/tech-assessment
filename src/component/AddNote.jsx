@@ -48,7 +48,7 @@ export default function AddNote({ setAddBtnClicked, setNotes }) {
 
   return (
     <form
-      className="flex flex-col gap-4 sm:m-4 lg:mx-64"
+      className="flex flex-col gap-4 sm:m-4 lg:mx-84"
       onSubmit={handleOnSubmit}
     >
       <h2 className="sm:text-2xl lg:text-3xl text-grey">Add your note here</h2>

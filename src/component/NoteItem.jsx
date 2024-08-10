@@ -10,6 +10,7 @@ export default function NoteItem({ notes, setNotes }) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
   const [pinnedNoteId, setPinnedNoteId] = useState([]);
   const [clickedNotes, setClickedNotes] = useState({});
+  const isMobile = () => window.innerWidth < 1366;
 
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */
@@ -62,13 +63,17 @@ export default function NoteItem({ notes, setNotes }) {
         <div
           key={note.id}
           className="relative flex flex-col w-full"
-          onMouseEnter={() => setHoveredNoteId(note.id)}
-          onMouseLeave={() => setHoveredNoteId(null)}
-          onClick={() => {
-            if (window.innerWidth < 1366) {
-              handleClickNote(note.id);
-            }
-          }}
+          onMouseEnter={() =>
+            !isMobile() &&
+            (setHoveredNoteId(note.id),
+            console.log("Mouse entered. Hovered Note: ", hoveredNoteId))
+          }
+          onMouseLeave={() =>
+            !isMobile() &&
+            (setHoveredNoteId(null),
+            console.log("Mouse left. Hovered Note: ", hoveredNoteId))
+          }
+          onClick={() => isMobile() && handleClickNote(note.id)}
         >
           <div className="sm:mx-4 lg:mx-84 flex flex-col gap-4">
             <h2 className="sm:text-2xl lg:text-3xl font-semibold text-darkgrey">
@@ -88,7 +93,10 @@ export default function NoteItem({ notes, setNotes }) {
           </div>
           <div
             className={`sm:max-w-full lg:w-full sm:ml-4 lg:m-0 sm:mt-4 sm:flex sm:flex-row sm:gap-4 lg:absolute lg:top-0 ${
-              clickedNotes[note.id] ? "" : "hidden"
+              (isMobile() && clickedNotes[note.id]) ||
+              (!isMobile() && hoveredNoteId === note.id)
+                ? ""
+                : "hidden"
             }`}
           >
             {pinnedNoteId.includes(note.id) ? (
@@ -104,7 +112,10 @@ export default function NoteItem({ notes, setNotes }) {
               <img
                 src={iconPin}
                 className={`sm:w-8 lg:w-12 lg:absolute lg:left-68 transition-all cursor-pointer ${
-                  clickedNotes[note.id] ? "" : "hidden"
+                  (isMobile() && clickedNotes[note.id]) ||
+                  (!isMobile() && hoveredNoteId === note.id)
+                    ? ""
+                    : "hidden"
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -115,7 +126,10 @@ export default function NoteItem({ notes, setNotes }) {
             <img
               src={iconDelete}
               className={`sm:w-8 lg:w-9 lg:absolute lg:right-56 transition-all cursor-pointer ${
-                clickedNotes[note.id] ? "" : "hidden"
+                (isMobile() && clickedNotes[note.id]) ||
+                (!isMobile() && hoveredNoteId === note.id)
+                  ? ""
+                  : "hidden"
               }`}
               onClick={(e) => {
                 e.stopPropagation();

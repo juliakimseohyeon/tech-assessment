@@ -11,6 +11,9 @@ export default {
       blue: "#4b89ab",
       green: "#61eb6e",
     },
+    screens: {
+      lg: "1366px",
+    },
     extend: {},
   },
   plugins: [],

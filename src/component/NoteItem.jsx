@@ -9,6 +9,7 @@ import TimestampComponent from "../utils/timeago";
 export default function NoteItem({ notes, setNotes }) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
   const [pinnedNoteId, setPinnedNoteId] = useState([]);
+  const [clickedNotes, setClickedNotes] = useState({});
 
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */
@@ -49,6 +50,12 @@ export default function NoteItem({ notes, setNotes }) {
     }
   };
 
+  const handleClickNote = (noteId) => {
+    console.log("Clicked Notes: ", clickedNotes);
+    // Check if clicked note is already in the clickedNotes. If it is, remove it from the object
+    setClickedNotes((prev) => ({ ...prev, [noteId]: !prev[noteId] }));
+  };
+
   return (
     <>
       {notes.map((note) => (
@@ -57,6 +64,11 @@ export default function NoteItem({ notes, setNotes }) {
           className="relative flex flex-col w-full"
           onMouseEnter={() => setHoveredNoteId(note.id)}
           onMouseLeave={() => setHoveredNoteId(null)}
+          onClick={() => {
+            if (window.innerWidth < 1366) {
+              handleClickNote(note.id);
+            }
+          }}
         >
           <div className="sm:mx-4 lg:mx-84 flex flex-col gap-4">
             <h2 className="sm:text-2xl lg:text-3xl font-semibold text-darkgrey">
@@ -74,12 +86,17 @@ export default function NoteItem({ notes, setNotes }) {
               </p>
             </div>
           </div>
-          <div className="sm:max-w-full lg:w-full sm:ml-4 lg:m-0 sm:mt-4 sm:flex sm:flex-row sm:gap-4 lg:absolute lg:top-0">
+          <div
+            className={`sm:max-w-full lg:w-full sm:ml-4 lg:m-0 sm:mt-4 sm:flex sm:flex-row sm:gap-4 lg:absolute lg:top-0 ${
+              clickedNotes[note.id] ? "" : "hidden"
+            }`}
+          >
             {pinnedNoteId.includes(note.id) ? (
               <img
                 src={iconPinBlue}
                 className={`sm:w-8 lg:w-12 lg:absolute lg:left-68 transition-all cursor-pointer`}
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   handleClickPin(note.id);
                 }}
               />
@@ -87,9 +104,10 @@ export default function NoteItem({ notes, setNotes }) {
               <img
                 src={iconPin}
                 className={`sm:w-8 lg:w-12 lg:absolute lg:left-68 transition-all cursor-pointer ${
-                  hoveredNoteId === note.id ? "block" : "hidden"
+                  clickedNotes[note.id] ? "" : "hidden"
                 }`}
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   handleClickPin(note.id);
                 }}
               />
@@ -97,9 +115,12 @@ export default function NoteItem({ notes, setNotes }) {
             <img
               src={iconDelete}
               className={`sm:w-8 lg:w-9 lg:absolute lg:right-56 transition-all cursor-pointer ${
-                hoveredNoteId === note.id ? "block" : "hidden"
+                clickedNotes[note.id] ? "" : "hidden"
               }`}
-              onClick={() => handleClickDelete(note.id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClickDelete(note.id);
+              }}
             />
           </div>
         </div>

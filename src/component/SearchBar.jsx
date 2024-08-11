@@ -2,7 +2,7 @@ import iconSearch from "../assets/icons/icon-search.svg";
 import axios from "axios";
 import { useState } from "react";
 
-export default function SearchBar({ notes, setNotes }) {
+export default function SearchBar({ notes, setNotes, getAllNotes }) {
   // Define a state to manage the input value
   const [inputValue, setInputValue] = useState("");
   /* -------------------------------------------------------------------------- */
@@ -11,22 +11,20 @@ export default function SearchBar({ notes, setNotes }) {
   const handleOnChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
-    if (value) {
-      searchNote(value);
-    }
+    searchNote(value);
   };
 
   /* -------------------------------------------------------------------------- */
   /*                Function to search for note using input data                */
   /* -------------------------------------------------------------------------- */
   const searchNote = async (input) => {
-    if (inputValue !== "") {
+    if (input.trim() !== "") {
       // Only make the request if query is not empty
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/?query=${input}`
         );
-        if (response) {
+        if (response.data) {
           console.log("Backend response: ", response.data);
           setNotes(response.data);
         }
@@ -35,7 +33,7 @@ export default function SearchBar({ notes, setNotes }) {
       }
     } else {
       // Clear notes if query is empty
-      setNotes(notes);
+      getAllNotes();
     }
   };
 

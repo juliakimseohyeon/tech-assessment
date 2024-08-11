@@ -12,25 +12,6 @@ export default function NoteItem({ notes, setNotes }) {
   const [clickedNotes, setClickedNotes] = useState({});
   const isMobile = () => window.innerWidth < 1280;
 
-  /* -------------------------------------------------------------------------- */
-  /*                   Function to load all notes in database                   */
-  /* -------------------------------------------------------------------------- */
-
-  useEffect(() => {
-    async function getAllNotes() {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
-        console.log("Fetched notes: ", response.data);
-        if (response) {
-          setNotes(response.data);
-        }
-      } catch (err) {
-        console.error("Failed to fetch notes: ", err);
-      }
-    }
-    getAllNotes();
-  }, []);
-
   const handleClickPin = (noteId) => {
     // Check if pinned note is already in the pinnedNoteId array. If it is, remove it from the array
     if (pinnedNoteId.includes(noteId)) {

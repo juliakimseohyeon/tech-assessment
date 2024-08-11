@@ -1,11 +1,31 @@
 import iconAdd from "../assets/icons/icon-add.svg";
 import NoteList from "../component/NoteList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchBar from "../component/SearchBar";
+import axios from "axios";
 
 export default function MainBoard() {
   const [addBtnClicked, setAddBtnClicked] = useState(false);
   const [notes, setNotes] = useState([]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                   Function to load all notes in database                   */
+  /* -------------------------------------------------------------------------- */
+  async function getAllNotes() {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
+      console.log("Fetched notes: ", response.data);
+      if (response) {
+        setNotes(response.data);
+      }
+    } catch (err) {
+      console.error("Failed to fetch notes: ", err);
+    }
+  }
+
+  useEffect(() => {
+    getAllNotes();
+  }, []);
 
   return (
     <main className="flex flex-col gap-6">
@@ -17,13 +37,19 @@ export default function MainBoard() {
           onClick={() => setAddBtnClicked(!addBtnClicked)}
         />
       </div>
-      <SearchBar notes={notes} setNotes={setNotes} />
-      <NoteList
-        addBtnClicked={addBtnClicked}
-        setAddBtnClicked={setAddBtnClicked}
-        notes={notes}
-        setNotes={setNotes}
-      />
+      <SearchBar notes={notes} setNotes={setNotes} getAllNotes={getAllNotes} />
+      {notes.length === 0 ? (
+        <h2 className="sm:text-2xl lg:text-3xl font-semibold text-red sm:mx-4 lg:mx-84">
+          No Note Found
+        </h2>
+      ) : (
+        <NoteList
+          addBtnClicked={addBtnClicked}
+          setAddBtnClicked={setAddBtnClicked}
+          notes={notes}
+          setNotes={setNotes}
+        />
+      )}
     </main>
   );
 }

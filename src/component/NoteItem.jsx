@@ -12,12 +12,32 @@ export default function NoteItem({ notes, setNotes }) {
   const [clickedNotes, setClickedNotes] = useState({});
   const isMobile = () => window.innerWidth < 1280;
 
-  const handleClickPin = (noteId) => {
+  const handleClickPin = async (noteId) => {
     // Check if pinned note is already in the pinnedNoteId array. If it is, remove it from the array
     if (pinnedNoteId.includes(noteId)) {
       setPinnedNoteId(pinnedNoteId.filter((id) => id !== noteId));
+      try {
+        const response = await axios.put(
+          `${import.meta.env.VITE_API_URL}/${noteId}`,
+          { pinned: 0 }
+        );
+        setNotes(response.data);
+        console.log("Response unpinning note: ", response);
+      } catch (err) {
+        console.error("Error removing pinned status: ", err);
+      }
     } else {
       setPinnedNoteId([...pinnedNoteId, noteId]);
+      try {
+        const response = await axios.put(
+          `${import.meta.env.VITE_API_URL}/${noteId}`,
+          { pinned: 1 }
+        );
+        setNotes(response.data);
+        console.log("Response pinning note: ", response);
+      } catch (err) {
+        console.error("Error adding pinned status: ", err);
+      }
     }
   };
 

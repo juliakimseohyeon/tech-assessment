@@ -16,7 +16,11 @@ export default function MainBoard() {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
       console.log("Fetched notes: ", response.data);
       if (response) {
-        setNotes(response.data);
+        setNotes(
+          response.data.sort((a, b) => {
+            return b.pinned - a.pinned;
+          })
+        );
       }
     } catch (err) {
       console.error("Failed to fetch notes: ", err);

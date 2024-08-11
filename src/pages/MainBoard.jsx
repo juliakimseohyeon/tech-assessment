@@ -14,7 +14,7 @@ export default function MainBoard() {
         <img
           src={iconAdd}
           className="sm:w-8 lg:w-14 cursor-pointer"
-          onClick={() => setAddBtnClicked(true)}
+          onClick={() => setAddBtnClicked(!addBtnClicked)}
         />
       </div>
       <SearchBar notes={notes} setNotes={setNotes} />

@@ -739,7 +739,7 @@ video {
   }
 }
 
-@media (min-width: 1366px) {
+@media (min-width: 1024px) {
   .lg\:absolute {
     position: absolute;
   }

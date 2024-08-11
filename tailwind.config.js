@@ -11,16 +11,16 @@ export default {
       blue: "#4b89ab",
       green: "#61eb6e",
     },
-    screens: {
-      sm: "375px",
-      lg: "1366px",
-    },
+
     extend: {
       spacing: {
         68: "17rem",
         80: "20rem",
         84: "21rem",
         128: "32rem", // following the standard of 128 / 4 = 32
+      },
+      screens: {
+        sm: "375px",
       },
     },
   },

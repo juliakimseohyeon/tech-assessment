@@ -10,7 +10,7 @@ export default function NoteItem({ notes, setNotes }) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
   const [pinnedNoteId, setPinnedNoteId] = useState([]);
   const [clickedNotes, setClickedNotes] = useState({});
-  const isMobile = () => window.innerWidth < 1366;
+  const isMobile = () => window.innerWidth < 1280;
 
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */

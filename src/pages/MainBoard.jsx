@@ -71,7 +71,7 @@ export default function MainBoard() {
           onClick={() => setAddBtnClicked(!addBtnClicked)}
         />
       </div>
-      <SearchBar notes={notes} setNotes={setNotes} getAllNotes={getAllNotes} />
+      <SearchBar setNotes={setNotes} getAllNotes={getAllNotes} />
       {isLoading ? (
         <h2>Loading...</h2>
       ) : notes.length === 0 ? (

@@ -2,7 +2,7 @@ import iconSearch from "../assets/icons/icon-search.svg";
 import axios from "axios";
 import { useState } from "react";
 
-export default function SearchBar({ notes, setNotes, getAllNotes }) {
+export default function SearchBar({ setNotes, getAllNotes }) {
   // Define a state to manage the input value
   const [inputValue, setInputValue] = useState("");
   /* -------------------------------------------------------------------------- */

@@ -73,7 +73,7 @@ export default function MainBoard() {
       </div>
       <SearchBar setNotes={setNotes} getAllNotes={getAllNotes} />
       {isLoading ? (
-        <h2>Loading...</h2>
+        <h2 className="sm:mx-4 lg:mx-84">Loading...</h2>
       ) : notes.length === 0 ? (
         <h2 className="sm:text-2xl lg:text-3xl font-semibold text-red sm:mx-4 lg:mx-84">
           No Note Found

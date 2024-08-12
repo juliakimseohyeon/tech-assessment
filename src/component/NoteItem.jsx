@@ -6,9 +6,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import TimestampComponent from "../utils/timeago";
 
-export default function NoteItem({ notes, setNotes }) {
+export default function NoteItem({
+  notes,
+  setNotes,
+  pinnedNoteId,
+  setPinnedNoteId,
+}) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
-  const [pinnedNoteId, setPinnedNoteId] = useState([]);
   const [clickedNotes, setClickedNotes] = useState({});
   const isMobile = () => window.innerWidth < 1280;
 
@@ -23,6 +27,12 @@ export default function NoteItem({ notes, setNotes }) {
         );
         setNotes(response.data);
         console.log("Response unpinning note: ", response);
+
+        // Save pinned state to local storage
+        localStorage.setItem(
+          "pinnedNotes",
+          JSON.stringify(pinnedNoteId.filter((id) => id !== noteId))
+        );
       } catch (err) {
         console.error("Error removing pinned status: ", err);
       }
@@ -35,6 +45,12 @@ export default function NoteItem({ notes, setNotes }) {
         );
         setNotes(response.data);
         console.log("Response pinning note: ", response);
+
+        // Save pinned state to local storage
+        localStorage.setItem(
+          "pinnedNotes",
+          JSON.stringify([...pinnedNoteId, noteId])
+        );
       } catch (err) {
         console.error("Error adding pinned status: ", err);
       }

@@ -7,6 +7,7 @@ import axios from "axios";
 export default function MainBoard() {
   const [addBtnClicked, setAddBtnClicked] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [pinnedNoteId, setPinnedNoteId] = useState([]);
 
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */
@@ -21,6 +22,7 @@ export default function MainBoard() {
             return b.pinned - a.pinned;
           })
         );
+        console.log("Sorted notes: ", response.data);
       }
     } catch (err) {
       console.error("Failed to fetch notes: ", err);
@@ -30,6 +32,20 @@ export default function MainBoard() {
   useEffect(() => {
     getAllNotes();
   }, []);
+
+  /* -------------------------------------------------------------------------- */
+  /*              Function to load pinned state from local storage              */
+  /* -------------------------------------------------------------------------- */
+
+  useEffect(() => {
+    // Load pinned state from local storage
+    const savedPinnedNotes = localStorage.getItem("pinnedNotes");
+    if (savedPinnedNotes) {
+      setPinnedNoteId(JSON.parse(savedPinnedNotes));
+    } else {
+      setPinnedNoteId([]);
+    }
+  }, [setPinnedNoteId]);
 
   return (
     <main className="flex flex-col gap-6">
@@ -52,6 +68,8 @@ export default function MainBoard() {
           setAddBtnClicked={setAddBtnClicked}
           notes={notes}
           setNotes={setNotes}
+          pinnedNoteId={pinnedNoteId}
+          setPinnedNoteId={setPinnedNoteId}
         />
       )}
     </main>

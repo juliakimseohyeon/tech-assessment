@@ -25,7 +25,6 @@ export default function SearchBar({ notes, setNotes, getAllNotes }) {
           `${import.meta.env.VITE_API_URL}/?query=${input}`
         );
         if (response.data) {
-          console.log("Backend response: ", response.data);
           setNotes(response.data);
         }
       } catch (err) {

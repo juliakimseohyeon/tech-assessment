@@ -2,7 +2,7 @@ import iconAddPerson from "../assets/icons/icon-add-person.svg";
 import iconPin from "../assets/icons/icon-pin.svg";
 import iconPinBlue from "../assets/icons/icon-pin-blue.svg";
 import iconDelete from "../assets/icons/icon-delete.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import TimestampComponent from "../utils/timeago";
 
@@ -74,7 +74,6 @@ export default function NoteItem({
   };
 
   const handleClickNote = (noteId) => {
-    console.log("Clicked Notes: ", clickedNotes);
     // Check if clicked note is already in the clickedNotes. If it is, remove it from the object
     setClickedNotes((prev) => ({ ...prev, [noteId]: !prev[noteId] }));
   };
@@ -85,16 +84,8 @@ export default function NoteItem({
         <div
           key={note.id}
           className="relative flex flex-col w-full"
-          onMouseEnter={() =>
-            !isMobile() &&
-            (setHoveredNoteId(note.id),
-            console.log("Mouse entered. Hovered Note: ", hoveredNoteId))
-          }
-          onMouseLeave={() =>
-            !isMobile() &&
-            (setHoveredNoteId(null),
-            console.log("Mouse left. Hovered Note: ", hoveredNoteId))
-          }
+          onMouseEnter={() => !isMobile() && setHoveredNoteId(note.id)}
+          onMouseLeave={() => !isMobile() && setHoveredNoteId(null)}
           onClick={() => isMobile() && handleClickNote(note.id)}
         >
           <div className="sm:mx-4 lg:mx-84 flex flex-col gap-4">

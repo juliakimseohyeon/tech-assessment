@@ -17,11 +17,11 @@ export default function MainBoard() {
     setIsLoading(true);
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
-      console.log("Fetched notes: ", response.data);
+
       if (response.data) {
         const sortedNotes = sortNotes(response.data);
         setNotes(sortedNotes);
-        console.log("Sorted notes: ", response.data);
+
         setIsLoading(false);
       }
     } catch (err) {

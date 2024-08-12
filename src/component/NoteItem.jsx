@@ -11,6 +11,7 @@ export default function NoteItem({
   setNotes,
   pinnedNoteId,
   setPinnedNoteId,
+  sortNotes,
 }) {
   const [hoveredNoteId, setHoveredNoteId] = useState(null);
   const [clickedNotes, setClickedNotes] = useState({});
@@ -25,8 +26,9 @@ export default function NoteItem({
           `${import.meta.env.VITE_API_URL}/${noteId}`,
           { pinned: 0 }
         );
-        setNotes(response.data);
-        console.log("Response unpinning note: ", response);
+        // Sort the updated notes
+        const sortedNotes = sortNotes(response.data);
+        setNotes(sortedNotes);
 
         // Save pinned state to local storage
         localStorage.setItem(
@@ -43,8 +45,9 @@ export default function NoteItem({
           `${import.meta.env.VITE_API_URL}/${noteId}`,
           { pinned: 1 }
         );
-        setNotes(response.data);
-        console.log("Response pinning note: ", response);
+        // Sort the updated notes
+        const sortedNotes = sortNotes(response.data);
+        setNotes(sortedNotes);
 
         // Save pinned state to local storage
         localStorage.setItem(

@@ -8,6 +8,7 @@ export default function NoteList({
   setAddBtnClicked,
   pinnedNoteId,
   setPinnedNoteId,
+  sortNotes,
 }) {
   return (
     <div className="max-w-full flex flex-col sm:gap-4 lg:gap-12 h-1/2 overflow-scroll">
@@ -19,6 +20,7 @@ export default function NoteList({
         setNotes={setNotes}
         pinnedNoteId={pinnedNoteId}
         setPinnedNoteId={setPinnedNoteId}
+        sortNotes={sortNotes}
       />
     </div>
   );

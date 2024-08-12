@@ -8,30 +8,27 @@ export default function MainBoard() {
   const [addBtnClicked, setAddBtnClicked] = useState(false);
   const [notes, setNotes] = useState([]);
   const [pinnedNoteId, setPinnedNoteId] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   /* -------------------------------------------------------------------------- */
   /*                   Function to load all notes in database                   */
   /* -------------------------------------------------------------------------- */
   async function getAllNotes() {
+    setIsLoading(true);
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
       console.log("Fetched notes: ", response.data);
-      if (response) {
-        setNotes(
-          response.data.sort((a, b) => {
-            return b.pinned - a.pinned;
-          })
-        );
+      if (response.data) {
+        const sortedNotes = sortNotes(response.data);
+        setNotes(sortedNotes);
         console.log("Sorted notes: ", response.data);
+        setIsLoading(false);
       }
     } catch (err) {
       console.error("Failed to fetch notes: ", err);
+      setIsLoading(false);
     }
   }
-
-  useEffect(() => {
-    getAllNotes();
-  }, []);
 
   /* -------------------------------------------------------------------------- */
   /*              Function to load pinned state from local storage              */
@@ -45,7 +42,24 @@ export default function MainBoard() {
     } else {
       setPinnedNoteId([]);
     }
-  }, [setPinnedNoteId]);
+  }, []);
+
+  // Load pinned status first to get the most up-to-date note data
+  useEffect(() => {
+    getAllNotes();
+  }, []);
+
+  /* -------------------------------------------------------------------------- */
+  /*            Function to sort notes by pinned state and date added           */
+  /* -------------------------------------------------------------------------- */
+  const sortNotes = (notesToSort) => {
+    return [...notesToSort].sort((a, b) => {
+      if (a.pinned !== b.pinned) {
+        return b.pinned - a.pinned;
+      }
+      return a.timestamp - b.timestamp;
+    });
+  };
 
   return (
     <main className="flex flex-col gap-6">
@@ -58,7 +72,9 @@ export default function MainBoard() {
         />
       </div>
       <SearchBar notes={notes} setNotes={setNotes} getAllNotes={getAllNotes} />
-      {notes.length === 0 ? (
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : notes.length === 0 ? (
         <h2 className="sm:text-2xl lg:text-3xl font-semibold text-red sm:mx-4 lg:mx-84">
           No Note Found
         </h2>
@@ -70,6 +86,7 @@ export default function MainBoard() {
           setNotes={setNotes}
           pinnedNoteId={pinnedNoteId}
           setPinnedNoteId={setPinnedNoteId}
+          sortNotes={sortNotes}
         />
       )}
     </main>
